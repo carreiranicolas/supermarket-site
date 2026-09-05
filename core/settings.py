@@ -32,6 +32,11 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1", # Necessário para funcionamento do debug_toobar
+    # ...
+]
 
 # Application definition
 
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
+    "debug_toolbar", # Nessário para o funcionamento do debug_toolbar
 ]
 
 MIDDLEWARE = [
@@ -55,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    "debug_toolbar.middleware.DebugToolbarMiddleware", # Nessário para debug_toolbar
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -108,6 +115,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# COOKIES
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 2 # Mantém os cookies por 3 dias (padrão é 2 semn)
+SESSION_SAVE_EVERY_REQUEST = True # Prazo é renovado a cada requisição (padrão é false)
+
+# Temos também:
+
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # fechou o navegador, acabou a sessão (padrão é False)
 
 
 # Internationalization
