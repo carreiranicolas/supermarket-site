@@ -48,6 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'carrinhos',
+    'contas',
+    'pedidos',
+    'produtos',
+
 
     "debug_toolbar", # Nessário para o funcionamento do debug_toolbar
 ]
@@ -150,6 +155,13 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+
+#SOBRE ARQUIVOS DE IMAGENS
+
+MEDIA_URL = '/media/' # -> URL utilizada para acessar esses arquivos. http://localhost:8000/media/foto.png
+MEDIA_ROOT = BASE_DIR / 'media'  #-> pasta fisica onde arquivos enviados pelos usuários
+# (uploads) serão armazenados.
 
 
 # Email
