@@ -6,6 +6,12 @@ from core.models import ModelBase
 class Categoria(ModelBase):
     nome = models.CharField(max_length=120)
 
+    class Meta:
+        ordering = ['nome']
+
+    def __str__(self):
+        return self.nome
+
 class Produto(ModelBase):
     nome = models.CharField(max_length=250)
     categoria = models.ForeignKey(
@@ -18,8 +24,14 @@ class Produto(ModelBase):
     desconto = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     imagem = models.ImageField(upload_to='produtos/', blank=True, null=True)
 
+    class Meta:
+        ordering = ['-adicionado_em']
+
     def preco_com_desconto(self):
         return self.preco * (1 - self.desconto/100)
 
+
+    def __str__(self):
+        return self.nome
 
 

@@ -125,9 +125,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 2 # Mantém os cookies por 3 dias (padrão é 2 semn)
 SESSION_SAVE_EVERY_REQUEST = True # Prazo é renovado a cada requisição (padrão é false)
-
-# Temos também:
-
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # fechou o navegador, acabou a sessão (padrão é False)
 
 
